@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="am">
+<head>
+    <meta charset="UTF-8">
+    <title>Koki EQUB Goba</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; text-align: center; }
+        input { padding: 10px; margin: 5px; width: 250px; }
+        button { padding: 10px 20px; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <h1>እንኳን ወደ Koki EQUB በደህና መጡ</h1>
+    <p>የዕቁብ ቁጥርዎን ለማወቅ ስምዎን እና ስልክ ቁጥርዎን ያስገቡ</p>
+    
+    <input type="text" id="name" placeholder="ሙሉ ስም">
+    <input type="text" id="phone" placeholder="ስልክ ቁጥር">
+    <button onclick="checkEqub()">ፈልግ</button>
+
+    <h2 id="result"></h2>
+
+    <script>
+        const members = [
+            { name: "አበበ ከበደ", phone: "0911000000", number: "10" },
+            { name: "ሰላም ተፈራ", phone: "0912000000", number: "15" }
+        ];
+
+        function checkEqub() {
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const resultDisplay = document.getElementById('result');
+
+            const user = members.find(m => m.name === name && m.phone === phone);
+
+            if (user) {
+                resultDisplay.innerHTML = "ውድ " + user.name + "፣ የእርስዎ የዕቁብ ቁጥር: " + user.number + " ነው።";
+            } else {
+                resultDisplay.innerHTML = "ይቅርታ፣ መረጃው አልተገኘም። እባክዎ እንደገና ይሞክሩ።";
+            }
+        }
+    </script>
+</body>
+</html>
